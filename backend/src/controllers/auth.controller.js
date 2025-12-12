@@ -1,6 +1,8 @@
+import { sendWelcomeEmail } from "../emails/emailHandlers.js";
 import { generateToken } from "../lib/utils.js";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
+import { ENV } from "../lib/env.js";
 
 
 const signup = async (req, res) => {
@@ -62,7 +64,12 @@ const signup = async (req, res) => {
                 }
             });
 
-            // todos: send a welcome to user (do later)
+            try {
+                await sendWelcomeEmail(savedUser.email, savedUser.fullName, ENV.CLIENT_URL);
+
+            } catch (err) {
+                console.error("Failed to send welcome email:", error);
+            }
 
         } else {
             res.status(400).json({
