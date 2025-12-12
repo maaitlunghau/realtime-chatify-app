@@ -62,7 +62,7 @@ const signup = async (req, res) => {
                 }
             });
 
-            // todos: send a welcome to user
+            // todos: send a welcome to user (do later)
 
         } else {
             res.status(400).json({
