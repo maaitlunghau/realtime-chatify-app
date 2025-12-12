@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
+import { ENV } from "../lib/env.js";
 
 export const connectDB = async () => {
     try {
-        if (!process.env.MONGO_URL) {
+        if (!ENV.MONGO_URL) {
             throw new Error("MONGO_URL environment variable is not defined");
         }
 
-        const conn = await mongoose.connect(process.env.MONGO_URL);
+        const conn = await mongoose.connect(ENV.MONGO_URL);
         console.log("✅ MongoDB Atlas connected: ", conn.connection.host);
 
     } catch (err) {
