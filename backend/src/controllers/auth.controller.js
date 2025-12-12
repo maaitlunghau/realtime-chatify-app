@@ -68,7 +68,7 @@ const signup = async (req, res) => {
                 await sendWelcomeEmail(savedUser.email, savedUser.fullName, ENV.CLIENT_URL);
 
             } catch (err) {
-                console.error("Failed to send welcome email:", error);
+                console.error("Failed to send welcome email:", err);
             }
 
         } else {
