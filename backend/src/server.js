@@ -4,16 +4,15 @@
  * -------------------------------------
  */
 import express from "express";
-import dotenv from "dotenv";
 import path from "path";
 
 import authRouter from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import { connectDB } from "./lib/db.js";
 import { jsonParser, urlencodedParser } from "./middlewares/parser.middleware.js";
+import { ENV } from "./lib/env.js";
 
 
-dotenv.config();
 const __dirname = path.resolve();
 
 const app = express();
@@ -24,7 +23,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/messages", messageRoutes);
 
 // make ready for deployment (render)
-if (process.env.NODE_ENV === "production") {
+if (ENV.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
     app.get("*", (_, res) => {
@@ -33,7 +32,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = ENV.PORT || 3000;
 connectDB()
     .then(() => {
         app.listen(PORT, () => {
