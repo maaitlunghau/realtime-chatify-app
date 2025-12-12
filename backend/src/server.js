@@ -9,12 +9,16 @@ import path from "path";
 
 import authRouter from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
+import { connectDB } from "./lib/db.js";
+import { jsonParser, urlencodedParser } from "./middlewares/parser.middleware.js";
 
 
 dotenv.config();
 const __dirname = path.resolve();
 
 const app = express();
+app.use(jsonParser);
+app.use(urlencodedParser);
 
 app.use("/api/auth", authRouter);
 app.use("/api/messages", messageRoutes);
@@ -30,4 +34,7 @@ if (process.env.NODE_ENV === "production") {
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(3000, () => console.log(`✅ Server is running now on port ${PORT}`));
+app.listen(3000, () => {
+    console.log(`✅ Server is running now on port ${PORT}`);
+    connectDB();
+});
