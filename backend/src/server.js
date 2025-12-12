@@ -34,7 +34,13 @@ if (process.env.NODE_ENV === "production") {
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(3000, () => {
-    console.log(`✅ Server is running now on port ${PORT}`);
-    connectDB();
-});
+connectDB()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`✅ Server is running now on port ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error("Failed to connect to database:", error);
+        process.exit(1);
+    });
