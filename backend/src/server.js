@@ -19,7 +19,7 @@ const app = express();
 app.use("/api/auth", authRouter);
 app.use("/api/messages", messageRoutes);
 
-// make ready for deployment
+// make ready for deployment (render)
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
