@@ -83,7 +83,7 @@ const signup = async (req, res) => {
         console.log("Error in signup controller:", err)
         return res.status(500).json({
             success: false,
-            error: "Interval server error"
+            error: "Internal server error"
         });
     }
 }
@@ -132,7 +132,7 @@ const login = async (req, res) => {
         console.error("Error in login controller:", err);
         return res.status(500).json({
             success: false,
-            error: "Interval server error"
+            error: "Internal server error"
         })
     }
 }
