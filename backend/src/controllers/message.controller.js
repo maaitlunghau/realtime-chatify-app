@@ -98,7 +98,7 @@ const getMessagesByUserId = async (req, res) => {
 const sendMessage = async (req, res) => {
     try {
         const { text, image } = req.body;
-        if (!text || !image) {
+        if (!text && !image) {
             return res.status(400).json({
                 success: false,
                 message: "Context message is required."
