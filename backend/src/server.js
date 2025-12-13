@@ -6,6 +6,7 @@
 import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 import authRouter from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
@@ -15,11 +16,15 @@ import { ENV } from "./lib/env.js";
 
 
 const __dirname = path.resolve();
-
 const app = express();
+
 app.use(jsonParser);
 app.use(urlencodedParser);
 app.use(cookieParser());
+app.use(cors({
+    origin: ENV.CLIENT_URL,
+    credentials: true
+}));
 
 app.use("/api/auth", authRouter);
 app.use("/api/messages", messageRoutes);
