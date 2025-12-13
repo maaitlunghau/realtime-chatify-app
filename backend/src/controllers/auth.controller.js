@@ -90,7 +90,7 @@ const signup = async (req, res) => {
 
 const login = async (req, res) => {
     const { email, password } = req.body;
-  
+
     if (!email || !password) {
         return res.status(400).json({
             success: false,
@@ -165,7 +165,10 @@ const updateProfile = async (req, res) => {
             });
         }
 
-        const uploadResponse = await cloudinary.uploader.upload(profilePic);
+        const uploadResponse = await cloudinary.uploader.upload(profilePic, {
+            folder: "profile_pics",
+            allowed_formats: ["jpg", "jpeg", "png", "gif", "webp"]
+        });
 
         const userId = req.user._id;
         const updatedUser = await User.findByIdAndUpdate(
