@@ -4,7 +4,6 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import { ENV } from "../lib/env.js";
 
-
 const signup = async (req, res) => {
     const { fullName, email, password } = req.body;
 
@@ -56,6 +55,7 @@ const signup = async (req, res) => {
 
             res.status(201).json({
                 success: true,
+                message: "✅ Signed up user successfully",
                 user: {
                     _id: newUser._id,
                     fullName: newUser.fullName,
@@ -68,7 +68,7 @@ const signup = async (req, res) => {
                 await sendWelcomeEmail(savedUser.email, savedUser.fullName, ENV.CLIENT_URL);
 
             } catch (err) {
-                console.error("Failed to send welcome email:", error);
+                console.error("Failed to send welcome email:", err);
             }
 
         } else {
@@ -87,12 +87,60 @@ const signup = async (req, res) => {
     }
 }
 
-const login = (req, res) => {
-    res.send("Login endpoint");
+const login = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) return res.status(400).json({
+            success: false,
+            message: "Invalid credentials!"
+        });
+
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        if (!isPasswordCorrect) return res.status(400).json({
+            success: false,
+            message: "Invalid credentials!"
+        });
+
+        generateToken(user._id, res);
+
+        return res.status(200).json({
+            success: true,
+            message: "✅ Logged in user successfully",
+            user: {
+                _id: user.fullName,
+                fullName: user.fullName,
+                email: user.email,
+                profilePic: user.profilePic
+            }
+        })
+
+    } catch (err) {
+        console.error("Error in login controller:", err);
+        return res.status(500).json({
+            success: false,
+            message: "Interval server error"
+        })
+    }
 }
 
-const logout = (req, res) => {
-    res.send("Logout endpoint");
+const logout = (_, res) => {
+    try {
+        res.cookie("jwt", "", { maxAge: 0 });
+
+        return res.status(200).json({
+            success: true,
+            message: "✅ Logged out successfully"
+        })
+
+    } catch (err) {
+        console.error("Error in logout controller:", err);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error"
+        });
+    }
 }
 
 export {
