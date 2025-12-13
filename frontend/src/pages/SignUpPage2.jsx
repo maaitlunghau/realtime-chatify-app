@@ -13,7 +13,7 @@ import {
     EyeOff,
 } from "lucide-react";
 
-function SignUpPage() {
+function SignUpPage2() {
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
@@ -38,13 +38,12 @@ function SignUpPage() {
     }
 
     return (
-        <div className="w-full flex items-center justify-center p-4 bg-slate-900 min-h-screen">
-            {/* <div className="relative w-full max-w-6xl md:h-[800px] h-[650px]"> */}
+        <div className="flex items-center justify-center p-4 bg-slate-900 min-h-screen">
             <div className="relative w-full max-w-6xl">
                 <BorderAnimatedContainer>
                     <div className="w-full flex flex-col md:flex-row">
                         {/* FORM LEFT - LEFT SIDE */}
-                        <div className="md:w-1/2 p-8 flex items-center justify-center md:border-r border-slate-600/30">
+                        <div className="w-full py-8 px-12 flex items-center justify-center md:border-r border-slate-600/30">
                             <div className="w-full max-w-md">
                                 {/* HEADING TEXT */}
                                 <div className="text-center mb-6">
@@ -172,28 +171,6 @@ function SignUpPage() {
                                 </form>
                             </div>
                         </div>
-
-                        {/* FORM ILLUSTRATION - RIGHT SIDE */}
-                        <div className="hidden md:w-1/2 md:flex items-center justify-center p-12 bg-gradient-to-bl from-slate-800/20 to-transparent">
-                            <div>
-                                <img
-                                    src="./signup.png"
-                                    alt="People using mobile object-contain"
-                                    className="w-100 h-auto object-contain"
-                                />
-                                <div className="mt-6 text-center">
-                                    <h3 className="text-xl font-medium text-cyan-400">
-                                        Start Your Journey Today
-                                    </h3>
-
-                                    <div className="mt-4 flex justify-center gap-4">
-                                        <span className="auth-badge">Free</span>
-                                        <span className="auth-badge">Easy</span>
-                                        <span className="auth-badge">Private</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </BorderAnimatedContainer>
             </div>
@@ -201,4 +178,4 @@ function SignUpPage() {
     )
 }
 
-export default SignUpPage
+export default SignUpPage2
