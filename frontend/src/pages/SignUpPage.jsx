@@ -82,7 +82,7 @@ function SignUpPage() {
                                             <MailIcon className="auth-input-icon" />
                                             <input
                                                 name="email"
-                                                type="text"
+                                                type="email"
                                                 value={formData.email}
                                                 onChange={handleInputChange}
                                                 className="input"
