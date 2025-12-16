@@ -15,7 +15,7 @@ input[type="password"]::-ms-clear {
 }
 
 .input {
-    @apply w-full bg-slate-800/50 border border-slate-700 rounded-lg py-2 pl-10 pr-4 text-slate-200 placeholder-slate-400 focus:ring-2 focus:ring-cyan-500 focus:border-transparent
+    @apply w-full bg-slate-800/50 border border-slate-700 rounded-lg py-2 h-10 pl-10 pr-4 text-slate-200 placeholder-slate-400 focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-sm
 }
 
 .auth-input-icon {
@@ -23,7 +23,7 @@ input[type="password"]::-ms-clear {
 }
 
 .auth-input-label {
-    @apply block text-sm font-medium text-slate-300 mb-2;
+    @apply block text-xs font-medium text-slate-300 mb-2;
 }
 
 .auth-badge {
@@ -39,12 +39,12 @@ input[type="password"]::-ms-clear {
 }
 
 .auth-link {
-    @apply px-4 py-2 inline-block bg-cyan-500/10 rounded-lg text-cyan-400
-    hover:text-cyan-500 text-sm transition-colors 
+    @apply inline-block text-cyan-400
+    hover:text-cyan-500 text-sm transition-colors
 }
 
 .social-btn {
     @apply w-full flex items-center justify-center gap-3
     border border-slate-600 rounded-lg py-2.5 text-slate-200
-  hover:bg-slate-800 transition
+hover:bg-slate-800 transition text-sm h-10
 }

@@ -36,26 +36,26 @@ function LoginPage() {
     }
 
     return (
-        <div className="w-full flex items-center justify-center p-4 bg-slate-900 min-h-screen">
-            <div className="relative w-full max-w-6xl">
+        <div className="w-full flex items-center justify-center px-4 bg-slate-900">
+            <div className="relative w-full max-w-5xl">
                 <BorderAnimatedContainer>
-                    <div className="w-full flex flex-col md:flex-row">
+                    <div className="w-full flex flex-col md:flex-row max-h-[480px] xl:max-h-[520px]">
                         {/* FORM LEFT - LEFT SIDE */}
-                        <div className="md:w-1/2 p-8 flex items-center justify-center md:border-r border-slate-600/30">
+                        <div className="md:w-1/2 p-12 flex items-center justify-center md:border-r border-slate-600/30">
                             <div className="w-full max-w-md">
                                 {/* HEADING TEXT */}
-                                <div className="text-center mb-6">
-                                    <MessageCircleIcon className="w-12 h-12 mx-auto text-slate-400 mb-4" />
-                                    <h2 className="text-xl font-bold text-slate-200 mb-2">
+                                <div className="text-center pt-6 xl:p-0 mb-3 xl:mb-6">
+                                    <MessageCircleIcon className="w-10 h-10 mx-auto text-slate-400 mb-4" />
+                                    <h2 className="text-lg font-bold text-slate-200 mb-1">
                                         Welcome Back
                                     </h2>
-                                    <p className="text-slate-400">
+                                    <p className="text-slate-400 text-sm">
                                         Login to access your account
                                     </p>
                                 </div>
 
                                 {/* FORM */}
-                                <form onSubmit={handleSubmit} className="space-y-6">
+                                <form onSubmit={handleSubmit} className="space-y-4 pb-6 xl:p-0">
                                     {/* EMAIL INPUT */}
                                     <div>
                                         <label className="auth-input-label">Email</label>
@@ -102,7 +102,7 @@ function LoginPage() {
                                     {/* DIVIDER */}
                                     <div className="relative my-6 flex items-center">
                                         <div className="flex-grow border-t border-slate-700" />
-                                        <span className="mx-3 text-sm text-slate-400">
+                                        <span className="mx-3 text-xs text-slate-400">
                                             OR
                                         </span>
                                         <div className="flex-grow border-t border-slate-700" />
@@ -145,7 +145,7 @@ function LoginPage() {
                                     </button>
 
                                     {/* FOOTERING */}
-                                    <div className="mt-6 text-center">
+                                    <div className="text-center">
                                         <Link to={"/signup"} className="auth-link">
                                             Don't have an account? Sign Up
                                         </Link>
@@ -155,14 +155,14 @@ function LoginPage() {
                         </div>
 
                         {/* FORM ILLUSTRATION - RIGHT SIDE */}
-                        <div className="hidden md:w-1/2 md:flex items-center justify-center p-12 bg-gradient-to-bl from-slate-800/20 to-transparent">
+                        <div className="hidden md:w-1/2 md:flex items-center justify-center bg-gradient-to-bl from-slate-800/20 to-transparent">
                             <div>
                                 <img
                                     src="./login.png"
                                     alt="People using mobile object-contain"
-                                    className="w-100 h-auto object-contain"
+                                    className="max-w-96 h-auto object-contain"
                                 />
-                                <div className="mt-6 text-center">
+                                <div className="text-center pb-10">
                                     <h3 className="text-xl font-medium text-cyan-400">
                                         Connect Anytime, Anywhere
                                     </h3>
