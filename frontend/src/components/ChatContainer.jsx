@@ -1,6 +1,6 @@
 function ChatContainer() {
     return (
-        <div>ChatContainer</div>
+        <div className="text-white">ChatContainer</div>
     )
 }
 
