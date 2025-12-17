@@ -16,6 +16,8 @@ function ChatContainer() {
         if (selectedUser?._id) getMessagesByUserId(selectedUser._id);
     }, [getMessagesByUserId, selectedUser]);
 
+    if (!authUser) return null;
+
     return (
         <>
             {/* Chat Header */}
@@ -26,7 +28,7 @@ function ChatContainer() {
                 {isMessagesLoading ? (
                     <MessageLoadingSkeleton />
                 ) : messages.length > 0 ? (
-                    <div className="max-w-3xl mx-auto space-y-6">
+                    <div className=" mx-auto space-y-6">
                         {messages.map(msg => (
                             <div
                                 key={msg._id}
