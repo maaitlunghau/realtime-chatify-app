@@ -78,7 +78,7 @@ const getMessagesByUserId = async (req, res) => {
                 { senderId: loggedInUserId, receiverId: receiverId },
                 { senderId: receiverId, receiverId: loggedInUserId },
             ]
-        });
+        }).sort({ createdAt: 1 });
 
         return res.status(200).json({
             success: true,
