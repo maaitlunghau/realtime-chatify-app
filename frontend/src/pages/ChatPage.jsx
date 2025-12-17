@@ -15,11 +15,11 @@ function ChatPage() {
         <div className="relative w-full min-h-screen">
             <div className="w-full h-full flex overflow-hidden bg-slate-900">
                 {/* LEFT SIDE */}
-                <div className="w-80 bg-slate-800/50 backdrop-blur-sm flex flex-col">
+                <div className="w-[350px] bg-slate-800/50 backdrop-blur-sm flex flex-col">
                     <ProfileHeader />
                     <ActiveTabSwitch />
 
-                    <div className="flex-1 overflow-y-auto p-4 space-y-2 border-r border-slate-600/50">
+                    <div className="flex-1 overflow-y-auto p-4 space-y-2 border-r border-slate-600/50 w-full">
                         {activeTab === "chats" ? <ChatsList /> : <ContactsList />}
                     </div>
                 </div>

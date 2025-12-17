@@ -1,9 +1,9 @@
 function UsersLoadingSkeleton() {
     return (
         <div className="">
-            {[...Array(5)].map((item) => (
+            {[...Array(5)].map((_, index) => (
                 <div
-                    key={item}
+                    key={index}
                     className="bg-slate-800/30 p-4 rounded-lg animate-pulse"
                 >
                     <div className="flex items-center space-x-3">
