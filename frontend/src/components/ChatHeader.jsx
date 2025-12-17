@@ -18,7 +18,7 @@ function ChatHeader() {
     }, [setSelectedUser]);
 
     return (
-        <div className="flex items-center justify-between bg-slate-800/50 border-b border-slate-700/50 max-h-[100px] px-6 flex-1">
+        <div className="flex items-center justify-between bg-slate-800/50 border-b border-slate-600/50 max-h-[90px] px-6 flex-1">
             {/* Left Side */}
             <div className="flex items-center space-x-3 ">
                 <div className="avatar online">

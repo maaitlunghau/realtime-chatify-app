@@ -16,6 +16,8 @@ function ChatContainer() {
         if (selectedUser?._id) getMessagesByUserId(selectedUser._id);
     }, [getMessagesByUserId, selectedUser]);
 
+    if (!authUser) return null;
+
     return (
         <>
             {/* Chat Header */}

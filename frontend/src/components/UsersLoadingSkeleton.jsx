@@ -1,7 +1,7 @@
 function UsersLoadingSkeleton() {
     return (
         <div className="">
-            {[1, 2, 3, 4, 5, 6, 7].map((item) => (
+            {[...Array(5)].map((item) => (
                 <div
                     key={item}
                     className="bg-slate-800/30 p-4 rounded-lg animate-pulse"
