@@ -8,6 +8,8 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import PageLoader from "./components/PageLoader";
 import SignUpPage2 from "./pages/SignUpPage2";
+import AuthLayout from "./layout/AuthLayout";
+import ChatLayout from "./layout/ChatLayout";
 
 export default function App() {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -18,26 +20,39 @@ export default function App() {
 
   console.log({ authUser });
 
+  if (isCheckingAuth) return <PageLoader />;
+
   return (
-    <div className="min-h-screen bg-slate-900 relative flex items-center justify-center p-10 overflow-hidden">
-      {/* bg-slate-900 */}
-      {/* DECORATES - GRID BG & GLOW SHAPES */}
-      < div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]" />
-      <div className="absolute top-0 -left-4 size-96 bg-pink-500 opacity-20 blur-[100px]" />
-      <div className="absolute bottom-0 -right-4 size-96 bg-cyan-500 opacity-20 blur-[100px]" />
+    <div>
+      <>
+        <Routes>
+          {/* Auth Pages */}
+          <Route element={<AuthLayout />}>
+            <Route
+              path="/login"
+              element={!authUser ? < LoginPage /> : <Navigate to={"/"} />}
+            />
+            <Route
+              path="/signup"
+              element={!authUser ? < SignUpPage /> : <Navigate to={"/"} />}
+            />
+            <Route
+              path="/signup-2"
+              element={!authUser ? < SignUpPage2 /> : <Navigate to={"/"} />}
+            />
+          </Route>
 
-      {isCheckingAuth ? <PageLoader /> : (
-        <>
-          <Routes>
-            <Route path="/" element={authUser ? <ChatPage /> : <Navigate to={"/login"} />} />
-            <Route path="/login" element={!authUser ? < LoginPage /> : <Navigate to={"/"} />} />
-            <Route path="/signup" element={!authUser ? < SignUpPage /> : <Navigate to={"/"} />} />
-            <Route path="/signup-2" element={!authUser ? < SignUpPage2 /> : <Navigate to={"/"} />} />
-          </Routes>
+          {/* Chat Page */}
+          <Route element={<ChatLayout />}>
+            <Route
+              path="/"
+              element={authUser ? <ChatPage /> : <Navigate to={"/login"}
+              />} />
+          </Route>
+        </Routes>
 
-          <Toaster />
-        </>
-      )}
+        <Toaster />
+      </>
     </div >
   )
 }
